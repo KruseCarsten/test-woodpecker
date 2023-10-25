@@ -5,7 +5,15 @@ variables:
   - &file Dockerfile
   - &repo bksolutions/test-woodpecker
 
+
 steps:
+
+  prepare:
+    image: woodpeckerci//plugin-docker-buildx
+    commands:
+      - echo "Prepare"
+      - ls -la
+      
   dryrun:
     image: woodpeckerci/plugin-docker-buildx
     settings:
