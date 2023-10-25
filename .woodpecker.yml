@@ -9,7 +9,7 @@ variables:
 steps:
 
   prepare:
-    image: debian
+    image: woodpeckerci/plugin-docker-buildx
     commands:
       - echo "This is the build step"
       - "ls -la"
