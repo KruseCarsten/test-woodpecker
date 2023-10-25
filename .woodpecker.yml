@@ -1,4 +1,4 @@
 steps:
   code:
     prettier:
-      image: woodpeckerci/plugin-prettier:next
+      image: docker.io/woodpeckerci/plugin-prettier:next
