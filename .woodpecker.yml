@@ -4,6 +4,7 @@ when:
 variables:
   - &file Dockerfile
   - &repo bksolutions/test-woodpecker
+  - &dhub https://index.docker.io/v1/
 
 
 steps:
@@ -22,9 +23,9 @@ steps:
       dry_run: true
       repo: *repo
       tags: latest
+      registry: *dhub
       logins:
-        # Default DockerHub login
-        - registry: https://index.docker.io/v1/
+        - registry: *dhub
           username:
             from_secret: DOCKER_BKSOL_USER
           password:
