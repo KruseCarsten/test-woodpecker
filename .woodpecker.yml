@@ -3,7 +3,7 @@ when:
 
 variables:
   - &file Dockerfile
-  - &repo ${DOCKER_BKSOL_USER}/test-woodpecker
+  - &repo bksolutions/test-woodpecker
 
 steps:
   dryrun:
