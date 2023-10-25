@@ -1,3 +1,4 @@
-code:
-  prettier:
-    image: woodpeckerci/plugin-prettier:next
+steps:
+  code:
+    prettier:
+      image: woodpeckerci/plugin-prettier:next
