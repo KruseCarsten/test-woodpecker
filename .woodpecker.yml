@@ -9,10 +9,10 @@ variables:
 steps:
 
   prepare:
-    image: woodpeckerci//plugin-docker-buildx
+    image: debian
     commands:
-      - echo "Prepare"
-      - ls -la
+      - echo "This is the build step"
+      - "ls -la"
       
   dryrun:
     image: woodpeckerci/plugin-docker-buildx
