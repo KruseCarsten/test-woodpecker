@@ -20,7 +20,7 @@ steps:
     settings:
       dockerfile: *file
       platforms: linux/arm/v7,linux/arm64/v8,linux/amd64,linux/i386
-      dry_run: true
+      dry_run: false
       repo: *repo
       tags: latest
       registry: *dhub
