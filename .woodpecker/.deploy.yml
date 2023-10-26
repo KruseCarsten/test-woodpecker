@@ -4,13 +4,19 @@ variables:
   - &dhub https://index.docker.io/v1/
 
 
-steps:      
+steps:
+  prepare:
+    image: woodpeckerci/plugin-docker-buildx
+    commands:
+      - ls -la
+      - ls -la ./.woodpecker
+
   dryrun:
     image: woodpeckerci/plugin-docker-buildx
     settings:
       dockerfile: *file
       platforms: linux/arm/v7,linux/arm64/v8,linux/amd64,linux/i386
-      dry_run: false
+      dry_run: true
       repo: *repo
       tags: latest
       registry: *dhub
@@ -22,12 +28,3 @@ steps:
             from_secret: DOCKER_BKSOL_PASS
     when:
       branch: main
-
-      
-  check-files:
-    image: woodpeckerci/plugin-docker-buildx
-    commands:
-      - echo "This is the build step"
-      - "ls -la"
-    when:
-      branch: check
