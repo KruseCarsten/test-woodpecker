@@ -5,12 +5,6 @@ variables:
 
 
 steps:
-  prepare:
-    image: woodpeckerci/plugin-docker-buildx
-    commands:
-      - ls -la
-      - ls -la ./.woodpecker
-
   dryrun:
     image: woodpeckerci/plugin-docker-buildx
     settings:
