@@ -1,9 +1,30 @@
 ---
 steps:
   check_files:
+    group: info
     image: woodpeckerci/plugin-git
     commands:
       - ls -la
       - ls -la ./.woodpecker
-      - ls -la ./.git
-      - git show-ref --tags -d
+      
+  codecov:
+    group: info
+    image: woodpeckerci/plugin-codecov
+    settings:
+      files:
+        - my-coverage-report-output.out
+        - another-coverage-report.json
+      token:
+        from_secret: codecov_token
+      
+  prettier:
+    group: info
+    image: woodpeckerci/plugin-prettier:next
+      
+  trivy:
+    group: info
+    image: woodpeckerci/plugin-trivy
+    settings:
+      skip-dirs: ".woodpecker"
+      dir: "."
+      severity: "UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL"
