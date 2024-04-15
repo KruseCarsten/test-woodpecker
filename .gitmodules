@@ -1,3 +1,11 @@
- [submodule "ci"]
- path = ci
- url = https://forge.codesys.com/git/tol,codesys-4-linux,docker.git
+ [submodule "ci-docker"]
+ path = ci_docker
+ url = https://forge.codesys.com/git/docker.git
+
+[submodule "ci-c4l"]
+ path = ci_c4l
+ url = https://forge.codesys.com/git/codesys-4-linux.git
+ 
+[submodule "ci-tol"]
+ path = ci_tol
+ url = https://forge.codesys.com/git/tol.git
