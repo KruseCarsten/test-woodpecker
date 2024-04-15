@@ -7,20 +7,26 @@ variables:
 
 steps:
   git-clone-ci:
+    when:
+      - event: [push, manual]
+        branch: main
     image: woodpeckerci/plugin-git
     settings:
-      remote: "https://forge.codesys.com/git/tol,codesys-4-linux,docker.git/codesys-4-linux-tol,codesys-4-linux,docker"
+      remote: "https://forge.codesys.com/git/tol,codesys-4-linux,docker.git/ codesys-4-linux-tol,codesys-4-linux,docker"
       depth: 1
       lfs: false
 
   verify:
+    when:
+      - event: [push, manual]
+        branch: main
     image: alpine
     commands:
       - ls -la
         
   build_n_push:
     when:
-      - event: [push, manual]
+      - event: [manual]
         branch: main
     image: woodpeckerci/plugin-docker-buildx
     settings:
