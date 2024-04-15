@@ -14,25 +14,17 @@ steps:
     volumes:
       - ${CI_WORKSPACE}:/git
     commands:
-      - git clone https://forge.codesys.com/git/tol,codesys-4-linux,docker.git/ ci
-
-  verify:
-    when:
-      - event: [push, manual]
-        branch: main
-    image: alpine
-    commands:
       - ls -la
-      - ls -la ci/
+      - git clone https://forge.codesys.com/git/tol,codesys-4-linux,docker.git/ ci
       - tree ci
         
   build_n_push:
     when:
-      - event: [manual]
+      - event: [push, manual]
         branch: main
     image: woodpeckerci/plugin-docker-buildx
     settings:
-      dockerfile: *file
+      dockerfile: ci/codesys-ide/Dockerfile
       platforms: *arch
       dry_run: true
       repo: *repo
