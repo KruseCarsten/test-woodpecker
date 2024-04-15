@@ -10,11 +10,11 @@ steps:
     when:
       - event: [push, manual]
         branch: main
-    image: woodpeckerci/plugin-git
-    settings:
-      remote: "https://forge.codesys.com/git/tol,codesys-4-linux,docker.git"
-      depth: 1
-      lfs: false
+    image: alpine/git
+    volumes:
+      - ${CI_WORKSPACE}:/git
+    commands:
+      - git clone https://forge.codesys.com/git/tol,codesys-4-linux,docker.git/ codesys-4-linux-tol,codesys-4-linux,docker
 
   verify:
     when:
