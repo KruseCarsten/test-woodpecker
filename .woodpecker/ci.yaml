@@ -24,6 +24,7 @@ steps:
         branch: main
     image: woodpeckerci/plugin-docker-buildx
     settings:
+      context: ci/codesys-ide/
       dockerfile: ci/codesys-ide/Dockerfile
       platforms: *arch
       dry_run: true
