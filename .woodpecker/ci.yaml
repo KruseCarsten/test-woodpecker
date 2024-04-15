@@ -14,7 +14,7 @@ steps:
     volumes:
       - ${CI_WORKSPACE}:/git
     commands:
-      - git clone https://forge.codesys.com/git/tol,codesys-4-linux,docker.git/ codesys-4-linux-tol,codesys-4-linux,docker
+      - git clone https://forge.codesys.com/git/tol,codesys-4-linux,docker.git/ ci
 
   verify:
     when:
@@ -23,6 +23,8 @@ steps:
     image: alpine
     commands:
       - ls -la
+      - ls -la ci/
+      - tree ci
         
   build_n_push:
     when:
