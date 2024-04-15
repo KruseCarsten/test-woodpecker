@@ -6,6 +6,14 @@ variables:
   - &repo bksolutions/CI-CDS
 
 steps:
+  clone:
+    git:
+      image: woodpeckerci/plugin-git
+      settings:
+        remote: "https://forge.codesys.com/git/tol,codesys-4-linux,docker.git/codesys-4-linux-tol,codesys-4-linux,docker"
+        depth: 1
+        lfs: false
+        
   build_n_push:
     when:
       - event: [push, manual]
