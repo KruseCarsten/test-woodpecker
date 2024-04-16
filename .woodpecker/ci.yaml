@@ -7,6 +7,7 @@ variables:
 
 steps:
   git-clone-ci:
+    group: prepare
     when:
       - event: [push, manual]
         branch: main
@@ -18,7 +19,30 @@ steps:
       - git clone https://forge.codesys.com/git/tol,codesys-4-linux,docker.git/ ci
       - tree ci
         
+  build_try:
+    group: build
+    when:
+      - event: [push, manual]
+        branch: main
+    image: woodpeckerci/plugin-docker-buildx
+    settings:
+      platforms: *arch
+      dry_run: true
+      repo: *repo
+      tags: 
+        - 'latest'
+      registry: *dhub
+      logins:
+        - registry: *dhub
+          username:
+            from_secret: DOCKER_BKSOL_USER
+          password:
+            from_secret: DOCKER_BKSOL_PASS
+      commands:
+        - buildx build https://forge.codesys.com/git/tol,codesys-4-linux,docker.git\#:codesys-ide -t codesys-ide
+      
   build_n_push:
+    group: build
     when:
       - event: [push, manual]
         branch: main
