@@ -20,6 +20,9 @@ steps:
   prettier:
     group: info
     image: woodpeckerci/plugin-prettier:next
+    commands:
+      - prettier --check --parser=markdown README.md
+      - prettier --write --parser=markdown README.md
       
   trivy:
     group: info
