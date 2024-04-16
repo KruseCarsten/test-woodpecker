@@ -21,7 +21,9 @@ steps:
     group: info
     image: woodpeckerci/plugin-prettier:next
     commands:
+      - cp README.md README.old
       - prettier --write --parser=markdown README.md
+      - diff README.md README.old
       
   trivy:
     group: info
